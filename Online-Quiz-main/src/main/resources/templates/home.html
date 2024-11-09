@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Countdown Timer with Moving Seconds</title>
+
+</head>
+<body>
+<div id="timer">
+	<span id="minutes">1</span>:<span id="seconds">30</span>
+</div>
+
+<script>
+        let minutesLeft = 1; // 1 minute
+        let secondsLeft = 30; // 30 seconds
+
+        function updateTimer() {
+            const minutesDisplay = document.getElementById('minutes');
+            const secondsDisplay = document.getElementById('seconds');
+
+            if (secondsLeft === 0) {
+                if (minutesLeft === 0) {
+                    clearInterval(interval);
+                    minutesDisplay.textContent = '0';
+                    secondsDisplay.textContent = '00';
+                    alert("Time's up!");
+                    return;
+                } else {
+                    minutesLeft--;
+                    secondsLeft = 59;
+                }
+            } else {
+                secondsLeft--;
+            }
+
+            minutesDisplay.textContent = minutesLeft.toString();
+            secondsDisplay.textContent = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft.toString();
+        }
+
+        const interval = setInterval(updateTimer, 1000);
+    </script>
+
+<
+</body>
+</html>
